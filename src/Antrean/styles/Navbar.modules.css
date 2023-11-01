@@ -1,0 +1,24 @@
+.logoXs, .logoMd {
+    width: 100%;
+}
+
+.logoXs {
+    display: none;
+}
+
+.logoMd {
+    display: flex;
+}
+
+  @media (max-width: 600px) {
+    .logoXs {
+      display: flex;
+    }
+
+    .logoMd {
+        display: none;
+    }
+
+
+  }
+  
