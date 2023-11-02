@@ -16,10 +16,12 @@ class Carousel extends Component {
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
-        adaptiveHeight: true
+        adaptiveHeight: true,
+        pauseOnHover: true,
+        arrows: false
       };
       return (
-        <div className="container">
+        <div className="carCont">
           <Slider {...settings}>
             <div><img src={carousel1} alt="Credit to Joshua Earle on Unsplash" /></div>
             <div><img src={carousel2} alt="Credit to Alisa Anton on Unsplash" /></div>

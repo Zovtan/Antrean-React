@@ -1,0 +1,20 @@
+.waktuAntri {
+  color: black;
+}
+
+.cardCont .slick-list {
+  background-color: aquamarine;
+    margin: 0 -5px;
+}
+
+.cardCont .slick-slide > div {
+  padding: 0 5px;
+}
+.cardCont .slick-prev:before,
+.cardCont .slick-next:before {
+  color: #7472cc;
+}
+
+.cardCont .restImg{
+    width: 200px;
+}

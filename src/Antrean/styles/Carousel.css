@@ -1,16 +1,10 @@
-.container {
+.carCont {
     width: 100vh;
     margin: 0 auto;
 }
 
-.slick-slide img {
+.carCont img {
     width: 100%;
     height: 40vh;
 }
-
-.slick-prev:before,
-.slick-next:before {
-  color: #7472cc;
-}
-
 

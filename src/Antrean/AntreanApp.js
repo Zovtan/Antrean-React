@@ -4,6 +4,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Carousel from "./components/Carousel";
 import RestoCard from "./components/RestoCard";
 import restaurants from './data/Restaurants';
+import { Typography } from "@mui/material";
 
 const primary = {
   main: "#7472cc",
@@ -35,7 +36,9 @@ function AntreanApp() {
       <div>
         <Navbar />
         <Carousel />
+        <Typography variant="h4" sx={{fontWeight:"bolder", mt:"5vh", ml:"5vh"}}>Restoran Terdekat</Typography>
         <RestoCard filteredRestaurants={filteredRestaurantsTerdekat} />
+        <Typography variant="h4" sx={{fontWeight:"bolder", mt:"5vh", ml:"5vh"}}>Sponsor</Typography>
         <RestoCard filteredRestaurants={filteredRestaurantsSponsor} />
       </div>
     </ThemeProvider>

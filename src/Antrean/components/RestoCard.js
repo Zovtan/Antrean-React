@@ -5,31 +5,130 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "../styles/CardSlider.css";
+import Rating from "@mui/material/Rating";
+import PersonIcon from "@mui/icons-material/Person";
+import PeopleIcon from "@mui/icons-material/People";
+import GroupsIcon from "@mui/icons-material/Groups";
 
 const RestoCard = (props) => {
+  /* menerima filter dari AntreanApp agar sesuai dgn kategori */
   const { filteredRestaurants } = props;
 
+  /* setting carousel cards */
+  const settings = {
+    infinite: false,
+    adaptiveHeight: true,
+    slidesToShow: 4,
+    slidesToScroll: 2,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
   return (
-    <Container sx={{ display: "flex", overflow: "auto", overflowY:"hidden", scrollBehavior:"smooth", msOverflowStyle:"none", scrollbarWidth:"none" }}>
-      {filteredRestaurants.map((restaurant, index) => (
-        <Card key={index} sx={{ minWidth: 250, flex: "0 0 auto", margin: "8px" }}>
-          <CardContent>
-          <img src={restaurant.img} width="250"/>
-            <Typography variant="h5" component="div">
-              {restaurant.nama}
-            </Typography>
-            <Typography variant="subtitle1" color="text.secondary">
-              {restaurant.keramaian}
-            </Typography>
-            <Typography variant="body2">
-              {restaurant.rating}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small">Learn More</Button>
-          </CardActions>
-        </Card>
-      ))}
+    <Container
+      className="cardCont"
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        overflow: "auto",
+        scrollBehavior: "smooth",
+        msOverflowStyle: "none",
+        scrollbarWidth: "none",
+        width: "100%",
+        margin: "0 auto",
+        mt: "5vh",
+      }}
+    >
+      <Slider {...settings}>
+        {filteredRestaurants.map((restaurant, index) => (
+          <Card
+            className="cards"
+            key={index}
+            sx={{ flex: "0 0 auto", minWidth: 150 }}
+          >
+            <CardContent
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "column",
+              }}
+            >
+              <img
+                className="restImg"
+                src={restaurant.img}
+                alt={restaurant.nama}
+              />              <Rating
+                name="read-only"
+                value={restaurant.rating}
+                readOnly
+                
+              />
+              <Typography variant="h5" component="h5" fontWeight="bolder">
+                {restaurant.nama}
+              </Typography>{" "}
+              {/* conditional rendering berdasarkan keramaian */}
+              <Typography
+                variant="subtitle1"
+                color={
+                  restaurant.keramaian === "sepi"
+                    ? "green"
+                    : restaurant.keramaian === "sedang"
+                    ? "#ffc400"
+                    : "red"
+                }
+              >
+                {restaurant.esWaktu}{" "}
+                <span className="waktuAntri">waktu antri</span>
+              </Typography>
+              {/* conditional rendering icon juga berdasarkan keramaian */}
+              <div>
+                {restaurant.keramaian === "sepi" && (
+                  <PersonIcon sx={{ fontSize: 60, color: "green" }} />
+                )}{" "}
+                {restaurant.keramaian === "sedang" && (
+                  <PeopleIcon sx={{ fontSize: 60, color: "#ffc400" }} />
+                )}{" "}
+                {restaurant.keramaian === "ramai" && (
+                  <GroupsIcon sx={{ fontSize: 60, color: "red" }} />
+                )}
+              </div>
+
+            </CardContent>
+            <CardActions>
+              <Button size="large" sx={{ margin: "0 auto" }}>
+                Antri sekarang!
+              </Button>
+            </CardActions>
+          </Card>
+        ))}
+      </Slider>
     </Container>
   );
 };
