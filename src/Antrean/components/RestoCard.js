@@ -78,18 +78,16 @@ const RestoCard = (props) => {
                 justifyContent: "center",
                 alignItems: "center",
                 flexDirection: "column",
+                backgroundColor: "red",
+                padding: "0",
               }}
             >
               <img
                 className="restImg"
                 src={restaurant.img}
                 alt={restaurant.nama}
-              />              <Rating
-                name="read-only"
-                value={restaurant.rating}
-                readOnly
-                
-              />
+              />{" "}
+              <Rating name="read-only" value={restaurant.rating} readOnly />
               <Typography variant="h5" component="h5" fontWeight="bolder">
                 {restaurant.nama}
               </Typography>{" "}
@@ -119,10 +117,9 @@ const RestoCard = (props) => {
                   <GroupsIcon sx={{ fontSize: 60, color: "red" }} />
                 )}
               </div>
-
             </CardContent>
-            <CardActions>
-              <Button size="large" sx={{ margin: "0 auto" }}>
+            <CardActions sx={{ margin: "0", padding: "0" }}>
+              <Button size="large" sx={{ margin: "0 auto", padding: "5" }}>
                 Antri sekarang!
               </Button>
             </CardActions>
