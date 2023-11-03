@@ -2,19 +2,29 @@
   color: black;
 }
 
+/* "wrapper" slide, keras kepala mau lebarinnya :) masih bermasalah, , nvm container maxWidth:"x1" :P */
 .cardCont .slick-list {
   background-color: aquamarine;
-    margin: 0 -5px;
+  /* jarak antar card */
+  margin: 0 -5px;
 }
 
+/* mengatur card */
+/* .cardCont .slick-slide */
+
+
+/* jarak antar card */
 .cardCont .slick-slide > div {
   padding: 0 5px;
 }
+
+/* warna tombol panah */
 .cardCont .slick-prev:before,
 .cardCont .slick-next:before {
   color: #7472cc;
 }
 
+/* lucunya ukuran card ikut lebar gambar */
 .cardCont .restImg{
     width: 200px;
 }

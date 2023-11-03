@@ -3,8 +3,9 @@ import Navbar from "./components/Navbar";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Carousel from "./components/Carousel";
 import RestoCard from "./components/RestoCard";
-import restaurants from './data/Restaurants';
+import restaurants from "./data/Restaurants";
 import { Typography } from "@mui/material";
+import SearchResto from "./components/SearchResto";
 
 const primary = {
   main: "#7472cc",
@@ -26,7 +27,7 @@ function AntreanApp() {
     (restaurant) => restaurant.kategori === "dekat"
   );
 
-      // Filter restaurants by category, e.g., "sponsor"
+  // Filter restaurants by category, e.g., "sponsor"
   const filteredRestaurantsSponsor = restaurants.filter(
     (restaurant) => restaurant.kategori === "sponsor"
   );
@@ -36,14 +37,24 @@ function AntreanApp() {
       <div>
         <Navbar />
         <Carousel />
-        <Typography variant="h4" sx={{fontWeight:"bolder", mt:"5vh", ml:"5vh"}}>Restoran Terdekat</Typography>
+        <SearchResto unfilteredRestaurants={restaurants}/>
+        <Typography
+          variant="h4"
+          sx={{ fontWeight: "bolder", mt: "5vh", ml: "5vh" }}
+        >
+          Restoran Terdekat
+        </Typography>
         <RestoCard filteredRestaurants={filteredRestaurantsTerdekat} />
-        <Typography variant="h4" sx={{fontWeight:"bolder", mt:"5vh", ml:"5vh"}}>Sponsor</Typography>
+        <Typography
+          variant="h4"
+          sx={{ fontWeight: "bolder", mt: "5vh", ml: "5vh" }}
+        >
+          Sponsor
+        </Typography>
         <RestoCard filteredRestaurants={filteredRestaurantsSponsor} />
       </div>
     </ThemeProvider>
   );
 }
-
 
 export default AntreanApp;

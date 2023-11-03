@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -24,6 +24,22 @@ const RestoCard = (props) => {
     adaptiveHeight: true,
     slidesToShow: 4,
     slidesToScroll: 2,
+    adaptiveHeight: true,
+    variableWidth: true /* live saver on god, g ada dokumentasi T-T padahal perlu, membuat width card tepat dgn apa yg kita set di jsx sama yg dibilang sama org stackoverflow: 
+    This will allow you to edit the width in your CSS where you can, generically use:
+
+    .slick-slide {
+        width: 100%;
+    }
+    
+    or in this case:
+    
+    .featured {
+        width: 100%;
+
+    anehnya buat responsive: g jln
+    }
+     */,
     responsive: [
       {
         breakpoint: 1024,
@@ -52,6 +68,7 @@ const RestoCard = (props) => {
 
   return (
     <Container
+      maxWidth="x1"
       className="cardCont"
       sx={{
         display: "flex",
@@ -60,7 +77,6 @@ const RestoCard = (props) => {
         scrollBehavior: "smooth",
         msOverflowStyle: "none",
         scrollbarWidth: "none",
-        width: "100%",
         margin: "0 auto",
         mt: "5vh",
       }}
@@ -75,10 +91,8 @@ const RestoCard = (props) => {
             <CardContent
               sx={{
                 display: "flex",
-                justifyContent: "center",
                 alignItems: "center",
                 flexDirection: "column",
-                backgroundColor: "red",
                 padding: "0",
               }}
             >
