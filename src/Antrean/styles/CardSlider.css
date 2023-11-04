@@ -4,7 +4,6 @@
 
 /* "wrapper" slide, keras kepala mau lebarinnya :) masih bermasalah, , nvm container maxWidth:"x1" :P */
 .cardCont .slick-list {
-  background-color: aquamarine;
   /* jarak antar card */
   margin: 0 -5px;
 }
@@ -26,10 +25,17 @@
 
 /* lucunya ukuran card ikut lebar gambar */
 .cardCont .restImg{
-    width: 200px;
+    min-width: 30vh;
+    max-width: 30vh;
+    min-height: 20vh;
+    max-height: 20vh;
 }
 
 /* .MuiContainer-root {
   background-color: #7472cc;
 
 } */
+
+.cardCont a {
+  text-decoration: none;
+}

@@ -1,60 +1,19 @@
 import React from "react";
-import Navbar from "./components/Navbar";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Carousel from "./components/Carousel";
-import RestoCard from "./components/RestoCard";
-import restaurants from "./data/Restaurants";
-import { Typography } from "@mui/material";
-import SearchResto from "./components/SearchResto";
+import HomeLayout from "./components/HomeLayout";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import RestoDetails from "./components/RestoDetails";
+import NotFound from "./components/NotFound"; // Import the Not Found component
 
-const primary = {
-  main: "#7472cc",
-  light: "#9f9ed3",
-  dark: "#5c5ba1",
-  contrastText: "#fff",
-};
-const theme = createTheme({
-  palette: {
-    primary: primary,
-    // You can also define other palettes like secondary if needed
-    // secondary: { ... },
-  },
-});
-
-function AntreanApp() {
-  // Filter restaurants by category, e.g., "dekat"
-  const filteredRestaurantsTerdekat = restaurants.filter(
-    (restaurant) => restaurant.kategori === "dekat"
-  );
-
-  // Filter restaurants by category, e.g., "sponsor"
-  const filteredRestaurantsSponsor = restaurants.filter(
-    (restaurant) => restaurant.kategori === "sponsor"
-  );
-
+const AntreanApp = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <div>
-        <Navbar />
-        <Carousel />
-        <SearchResto unfilteredRestaurants={restaurants}/>
-        <Typography
-          variant="h4"
-          sx={{ fontWeight: "bolder", mt: "5vh", ml: "5vh" }}
-        >
-          Restoran Terdekat
-        </Typography>
-        <RestoCard filteredRestaurants={filteredRestaurantsTerdekat} />
-        <Typography
-          variant="h4"
-          sx={{ fontWeight: "bolder", mt: "5vh", ml: "5vh" }}
-        >
-          Sponsor
-        </Typography>
-        <RestoCard filteredRestaurants={filteredRestaurantsSponsor} />
-      </div>
-    </ThemeProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomeLayout />} />
+        <Route path="/restoran/:restaurantId" element={<RestoDetails />} />
+        <Route path="*" element={<NotFound />} /> {/* Catch-all route for Not Found */}
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default AntreanApp;
