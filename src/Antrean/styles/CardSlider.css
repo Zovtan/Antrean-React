@@ -24,12 +24,12 @@
 }
 
 /* lucunya ukuran card ikut lebar gambar */
-.cardCont .restImg{
+/* .cardCont .restImg{
     min-width: 30vh;
     max-width: 30vh;
     min-height: 20vh;
     max-height: 20vh;
-}
+} */
 
 /* .MuiContainer-root {
   background-color: #7472cc;

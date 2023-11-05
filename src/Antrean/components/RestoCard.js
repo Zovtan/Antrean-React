@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Container } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
+import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -25,7 +26,6 @@ const RestoCard = (props) => {
     adaptiveHeight: true,
     slidesToShow: 4,
     slidesToScroll: 2,
-    adaptiveHeight: true,
     variableWidth: true /* live saver on god, g ada dokumentasi T-T padahal perlu, membuat width card tepat dgn apa yg kita set di jsx sama yg dibilang sama org stackoverflow: 
     This will allow you to edit the width in your CSS where you can, generically use:
 
@@ -89,7 +89,13 @@ const RestoCard = (props) => {
               key={index}
               sx={{ flex: "0 0 auto", minWidth: "30vh", maxWidth: "30vh" }}
             >
-              <CardContent 
+              <CardMedia
+                component="img"
+                image={restaurant.img}
+                alt={restaurant.nama}
+                sx={{height:"20vh"}}
+              />
+              <CardContent
                 sx={{
                   display: "flex",
                   alignItems: "center",
@@ -97,11 +103,6 @@ const RestoCard = (props) => {
                   padding: "0",
                 }}
               >
-                <img
-                  className="restImg"
-                  src={restaurant.img}
-                  alt={restaurant.nama}
-                />{" "}
                 <Typography variant="h5" component="h5" fontWeight="bolder">
                   {restaurant.nama}
                 </Typography>

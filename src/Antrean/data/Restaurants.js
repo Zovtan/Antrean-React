@@ -10,7 +10,7 @@ const restaurants = [
       alamat: "Jalan Durian No.34",
       jarak: "350m",
       desc: "Cafe Caffeine adalah kafe trendi yang populer di Medan dengan suasana modern dan berkelas, menawarkan berbagai pilihan kopi terbaik dan sering mengadakan acara seni yang menarik.",
-      jadwal: "Hari Biasa: 08.00-22.00\nSabtu: 10.00-00.00\nMinggu: 10.00-23.00",
+      jadwal: ["Hari Biasa: 08.00-22.00","Sabtu: 10.00-00.00","Minggu: 10.00-23.00"],
       kontak: {
         phone: "(061) 823 233 3232",
         socialMedia: ["@cafecafeine", "@cafecaffeine_official", "@cafecaffeinecafe"]
@@ -27,7 +27,7 @@ const restaurants = [
       alamat: "Jl. Tangguk Bongkar I No.52a, Tegal Sari Mandala II, Kec. Medan Denai, Kota Medan, Sumatera Utara 20224",
       jarak: "1km",
       desc: "House Of Brew - Happy to Celebrate Every Moment with U <3",
-      jadwal: "Hari Biasa: 10.00-23.30\nSabtu: 10.00-00.00\nMinggu: 10.00-00.00",
+      jadwal: ["Hari Biasa: 10.00-23.30","Sabtu: 10.00-00.00","Minggu: 10.00-00.00"],
       kontak: {
         phone: "0821-6855-8838",
         socialMedia: ["@houseofbrew.id", "@houseofbrew_id", "@houseofbrew_ofc"]
@@ -44,7 +44,7 @@ const restaurants = [
       alamat: "Thamrin Plaza, Thamrin Plaza Lantai 5, Jl. M. H. Thamrin No. 75R, Sei Rengas II, Medan, Kota Medan, Sumatera Utara 20214",
       jarak: "500m",
       desc: "Dimsum, Suki & Chinese Cuisine Specialist",
-      jadwal: "Hari Biasa: 11.00-21.45\nSabtu: 11.00-21.45\nMinggu: 11.00-21.45",
+      jadwal: ["Hari Biasa: 11.00-21.45","Sabtu: 11.00-21.45","Minggu: 11.00-21.45"],
       kontak: {
         phone: "(061) 7354916",
         socialMedia: ["@nelayanrestaurant", "@nelayanrestaurantofc", "@nelayanrestaurant.id"]
@@ -61,7 +61,7 @@ const restaurants = [
       alamat: "Jl. Teuku Daud No.6/12, Madras Hulu, Kec. Medan Polonia, Kota Medan, Sumatera Utara 20152",
       jarak: "1.5km",
       desc: "A Good Deal of Sushi",
-      jadwal: "Hari Biasa: 10.00-22.00\nSabtu: 10.00-22.00\nMinggu: 10.00-22.00",
+      jadwal: ["Hari Biasa: 10.00-22.00","Sabtu: 10.00-22.00","Minggu: 10.00-22.00"],
       kontak: {
         phone: "(061) 62001101",
         socialMedia: ["@sushitei_medan", "@sushitei.ofc", "@sushitei.id"]
@@ -78,7 +78,7 @@ const restaurants = [
       alamat: "Jl. Palang Merah No.114, Petisah Tengah, Kec. Medan Petisah, Kota Medan, Sumatera Utara 20212",
       jarak: "1.2km",
       desc: "Sweetening your City life since 2006",
-      jadwal: "Hari Biasa: 09.00-22.30\nSabtu: 09.00-22.30\nMinggu: 09.00-22.30",
+      jadwal: ["Hari Biasa: 09.00-22.30","Sabtu: 09.00-22.30","Minggu: 09.00-22.30"],
       kontak: {
         phone: "081368182654",
         socialMedia: ["@officialcityicecream", "@cityicecreamid", "@cityicecream_id"]
@@ -95,7 +95,7 @@ const restaurants = [
       alamat: "Jl. Taruma No.15b, Petisah Tengah, Kec. Medan Petisah, Kota Medan, Sumatera Utara 20151",
       jarak: "600m",
       desc: "Iconic Florist Cafe in Medan",
-      jadwal: "Hari Biasa: 10.00-22.00\nSabtu: 10.00-22.00\nMinggu: 10.00-22.00",
+      jadwal: ["Hari Biasa: 10.00-22.00","Sabtu: 10.00-22.00","Minggu: 10.00-22.00"],
       kontak: {
         phone: "08126077606",
         socialMedia: ["@purezza_cafe", "@ofcpurezzacafe", "@purezzacafe_id"]
@@ -112,7 +112,7 @@ const restaurants = [
       alamat: "Jl. Perintis Kemerdekaan, Kesawan, Kec. Medan Bar., Kota Medan, Sumatera Utara 20236",
       jarak: "2km",
       desc: "Casual eatery serving global fare such as finger foods, pizza & burgers, plus smoothies & mocktails.",
-      jadwal: "Hari Biasa: 11.00-01.00\nSabtu: 11.00-03.00\nMinggu: 11.00-03.00",
+      jadwal: ["Hari Biasa: 11.00-01.00","Sabtu: 11.00-03.00","Minggu: 11.00-03.00"],
       kontak: {
         phone: "(061) 4561662",
         socialMedia: ["@bistronomix", "@bistronomixmdn", "@bistronomix_mdn"]
@@ -129,7 +129,7 @@ const restaurants = [
       alamat: "Jl. Multatuli No.36, Hamdan, Kec. Medan Maimun, Kota Medan, Sumatera Utara 20151",
       jarak: "1.7km",
       desc: "Speciality Coffee",
-      jadwal: "Hari Biasa: 09.00-23.00\nSabtu: 09.00-23.00\nMinggu: 09.00-23.00",
+      jadwal: ["Hari Biasa: 09.00-23.00","Sabtu: 09.00-23.00","Minggu: 09.00-23.00"],
       kontak: {
         phone: "(061) 4530970",
         socialMedia: ["@thethirtysix", "@thethirtysixmdn", "@thethirtysixkno"]
@@ -146,7 +146,7 @@ const restaurants = [
       alamat: "Gedung Forum Nine CIMB Niaga Lanta Dasar, Jl. Imam Bonjol No.9, Petisah Tengah, Medan Petisah, Medan City, North Sumatra 20112",
       jarak: "3.7km",
       desc: "Pub plates & cocktails served in relaxed, lofty surrounds with stylish decor & outdoor seating.",
-      jadwal: "Hari Biasa: 02.00-23.00\nSabtu: 10.00-23.00\nMinggu: 10.00-23.00",
+      jadwal: ["Hari Biasa: 02.00-23.00","Sabtu: 10.00-23.00","Minggu: 10.00-23.00"],
       kontak: {
         phone: "(061) 4520481",
         socialMedia: ["@harbour9", "@harbour9", "@harbour9.id"]
@@ -163,7 +163,7 @@ const restaurants = [
       alamat: "Jl. Abdullah Lubis No.8-20, Petisah Hulu, Kec. Medan Baru, Kota Medan, Sumatera Utara 20153",
       jarak: "2.4km",
       desc: "Instagramable Cafe In Medan",
-      jadwal: "Hari Biasa: 11.00-22.00\nSabtu: 11.00-22.00\nMinggu: 11.00-22.00",
+      jadwal: ["Hari Biasa: 11.00-22.00","Sabtu: 11.00-22.00","Minggu: 11.00-22.00"],
       kontak: {
         phone: "(061) 42006685",
         socialMedia: ["@sosmedcafe", "@sosmedcafe.id", "@sosmedcafe_mdn"]
@@ -180,7 +180,7 @@ const restaurants = [
       alamat: "Thamrin Plaza, Lt.2, Jl. M.H Thamrin No.75R, Sei Rengas I, Kec. Medan Kota, Kota Medan, Sumatera Utara 20211",
       jarak: "300m",
       desc: "Seattle-based coffeehouse chain known for its signature roasts, light bites and WiFi availabilit",
-      jadwal: "Hari Biasa: 11.00-22.00\nSabtu: 11.00-22.00\nMinggu: 11.00-22.00",
+      jadwal: ["Hari Biasa: 11.00-22.00","Sabtu: 11.00-22.00","Minggu: 11.00-22.00"],
       kontak: {
         phone: "(061) 7362508",
         socialMedia: ["@starbucksindonesia", "@starbucksindoensia", "@starbucks.id"]
@@ -197,7 +197,7 @@ const restaurants = [
       alamat: "Jl. Aipda KS Tubun No.33, Pandau Hulu I, Kec. Medan Kota, Kota Medan, Sumatera Utara 20233",
       jarak: "250m",
       desc: "The Havenly Space To Enjoy Coffee",
-      jadwal: "Hari Biasa: 08.00-21.00\nSabtu: 08.00-21.00\nMinggu: 08.00-21.00",
+      jadwal: ["Hari Biasa: 08.00-21.00","Sabtu: 08.00-21.00","Minggu: 08.00-21.00"],
       kontak: {
         phone: "(061) 51231891",
         socialMedia: ["@Thebrewingspace", "@thebrewingspacekno", "@thebrewingspace"]
@@ -214,7 +214,7 @@ const restaurants = [
       alamat: "Jl. Gandhi No.129F, Sei Rengas II, Kec. Medan Area, Kota Medan, Sumatera Utara 20211",
       jarak: "700m",
       desc: "Passion in Crafting Excellence We aim to be the best Croissanterie in town and beyond",
-      jadwal: "Hari Biasa: 09.00-21.30\nSabtu: 09.00-21.30\nMinggu: 09.00-21.30",
+      jadwal: ["Hari Biasa: 09.00-21.30","Sabtu: 09.00-21.30","Minggu: 09.00-21.30"],
       kontak: {
         phone: "0813-6695-3956",
         socialMedia: ["@t1311.co", "@thirteeneleven", "@t1311.mdn"]
@@ -231,7 +231,7 @@ const restaurants = [
       alamat: "Jl. Wahidin No.11, Pandau Hulu I, Kec. Medan Kota, Kota Medan, Sumatera Utara 20211",
       jarak: "150m",
       desc: "Coffee & Toast",
-      jadwal: "Hari Biasa: 08.00-22.00\nSabtu: 08.00-22.00\nMinggu: 08.00-22.00",
+      jadwal: ["Hari Biasa: 08.00-22.00","Sabtu: 08.00-22.00","Minggu: 08.00-22.00"],
       kontak: {
         phone: "0813-6695-3956",
         socialMedia: ["@t1311.co", "@thirteeneleven", "@t1311.mdn"]
@@ -248,7 +248,7 @@ const restaurants = [
       alamat: "Jl. Wahidin No.5A, Pandau Hulu I, Kec. Medan Kota, Kota Medan, Sumatera Utara 20211",
       jarak: "200m",
       desc: "No Coffee No Prana, Coffee makes life better",
-      jadwal: "Hari Biasa: 09.00-20.00\nSabtu: 09.00-20.00\nMinggu: 09.00-20.00",
+      jadwal: ["Hari Biasa: 09.00-20.00","Sabtu: 09.00-20.00","Minggu: 09.00-20.00"],
       kontak: {
         phone: "0812-6971-3311",
         socialMedia: ["@pranacafe.wahidin", "@pranacafemdn", "@pranacafekno"]
@@ -265,7 +265,7 @@ const restaurants = [
       alamat: "Jl. Aipda KS Tubun No.1, Pandau Hulu I, Kec. Medan Kota, Kota Medan, Sumatera Utara 20211",
       jarak: "350m",
       desc: "Ready To Served You Japanese Coffee Shop Concept Coffee & Matcha Specialist",
-      jadwal: "Hari Biasa: 09.00-20.00\nSabtu: 09.00-20.00\nMinggu: 09.00-20.00",
+      jadwal: ["Hari Biasa: 09.00-20.00","Sabtu: 09.00-20.00","Minggu: 09.00-20.00"],
       kontak: {
         phone: "0812-6971-3311",
         socialMedia: ["@pranacafe.wahidin", "@pranacafemdn", "@pranacafekno"]
@@ -282,7 +282,7 @@ const restaurants = [
       alamat: "Jl. Aipda KS Tubun No.117/103, Pandau Hulu I, Kec. Medan Kota, Kota Medan, Sumatera Utara 20211",
       jarak: "400m",
       desc: "Brewing & Serving Daily",
-      jadwal: "Hari Biasa: 08.00-22.00\nSabtu: 08.00-22.00\nMinggu: 08.00-22.00",
+      jadwal: ["Hari Biasa: 08.00-22.00","Sabtu: 08.00-22.00","Minggu: 08.00-22.00"],
       kontak: {
         phone: "0852-1211-7117",
         socialMedia: ["@hubdrajasumatera", "@hubdraja", "@hubdrajamdn"]
@@ -299,7 +299,7 @@ const restaurants = [
       alamat: "Jl. Madong Lubis No.34a, Pandau Hulu I, Kec. Medan Kota, Kota Medan, Sumatera Utara 20233",
       jarak: "550m",
       desc: "Speciality Coffee House with Japanese Scandinavian Style",
-      jadwal: "Hari Biasa: 07.30-22.00\nSabtu: 07.30-22.00\nMinggu: 07.30-22.00",
+      jadwal: ["Hari Biasa: 07.30-22.00","Sabtu: 07.30-22.00","Minggu: 07.30-22.00"],
       kontak: {
         phone: "0811-6149-669",
         socialMedia: ["@Kokorocoffeeid", "@Kokorocoffeemdn", "@Kokorocoffee_id"]
@@ -315,8 +315,8 @@ const restaurants = [
       rating:5,
       alamat: "Jl. Williem Iskandar, Kenangan Baru, Kec. Percut Sei Tuan, Kota Medan, Sumatera Utara",
       jarak: "1km",
-      desc: "Jagonya Mie\n Mie Pedas No.1 Diindoensia",
-      jadwal: "Hari Biasa: 09.00-23.00\nSabtu: 09.00-23.00\nMinggu: 09.00-23.00",
+      desc: "Jagonya Mie Pedas No.1 Diindoensia",
+      jadwal: ["Hari Biasa: 09.00-23.00","Sabtu: 09.00-23.00","Minggu: 09.00-23.00"],
       kontak: {
         phone: "0897-9192-129",
         socialMedia: ["@mie.gacoan", "@miegacoanid", "@miegacoan"]
@@ -333,7 +333,7 @@ const restaurants = [
       alamat: "Jl. Aipda KS Tubun No.81, Pandau Hulu I, Kec. Medan Kota, Kota Medan, Sumatera Utara 20211",
       jarak: "900m",
       desc: "Es krim sajian lembut dan minuman teh asal Zhengzhou, Henan, Tiongkok",
-      jadwal: "Hari Biasa: 10.00-22.00\nSabtu: 10.00-22.00\nMinggu: 10.00-22.00",
+      jadwal: ["Hari Biasa: 10.00-22.00","Sabtu: 10.00-22.00","Minggu: 10.00-22.00"],
       kontak: {
         phone: "0858-7832-2378",
         socialMedia: ["@mixue.medan", "@mixuemedan", "@mixuekno"]
@@ -350,7 +350,7 @@ const restaurants = [
       alamat: "Jl. S. Parman No.217, Petisah Tengah, Kec. Medan Petisah, Kota Medan, Sumatera Utara 20111",
       jarak: "2.2km",
       desc: "The best Rooftop Restaurant In Medan",
-      jadwal: "Hari Biasa: 04.00-23.00\nSabtu: 04.00-23.00\nMinggu: 04.00-23.00",
+      jadwal: ["Hari Biasa: 04.00-23.00","Sabtu: 04.00-23.00","Minggu: 04.00-23.00"],
       kontak: {
         phone: "0811-6531-599",
         socialMedia: ["@cambridgehotelmedan", "@cambridgehotelmedan", "@cambridgehotelmdn"]
@@ -367,7 +367,7 @@ const restaurants = [
       alamat: "Thamrin Plaza, Jl. M.H Thamrin No.75R, Sei Rengas I, Kec. Medan Kota, Kota Medan, Sumatera Utara 2021",
       jarak: "250m",
       desc: "comfortable place to hangout or or have dinner with your family with an affordable price and tasty food of traditional Medan Indonesia.",
-      jadwal: "Hari Biasa: 10.00-22.00\nSabtu: 10.00-22.00\nMinggu: 10.00-22.00",
+      jadwal: ["Hari Biasa: 10.00-22.00","Sabtu: 10.00-22.00","Minggu: 10.00-22.00"],
       kontak: {
         phone: "(061) 7330592",
         socialMedia: ["@thecoffeecrowdofficial", "@thecoffeecrowdofc", "@thecoffeecrowdid"]
@@ -384,7 +384,7 @@ const restaurants = [
       alamat: "Jl. Kol. Sugiono No.31, A U R, Kec. Medan Maimun, Kota Medan, Sumatera Utara 20212",
       jarak: "1.9km",
       desc: "Traditional seafood specialties in a lively restaurant offering unpretentious outdoor dining.",
-      jadwal: "Hari Biasa: 04.00-22.00\nSabtu: 04.00-22.00\nMinggu: 11.00-22.00",
+      jadwal: ["Hari Biasa: 04.00-22.00","Sabtu: 04.00-22.00","Minggu: 11.00-22.00"],
       kontak: {
         phone: "(061) 7330592",
         socialMedia: ["@wajir.seafood", "@wajir.seafood", "@wajirseafood.id"]
@@ -401,7 +401,7 @@ const restaurants = [
       alamat: "J K L, Jl. Pandu No.1, A U R, Medan Maimun, Medan City, North Sumatra 20212",
       jarak: "1.4km",
       desc: "Fusion Cafe & Patisserie",
-      jadwal: "Hari Biasa: 11.00-22.00\nSabtu: 11.00-22.00\nMinggu: 11.00-22.00",
+      jadwal: ["Hari Biasa: 11.00-22.00","Sabtu: 11.00-22.00","Minggu: 11.00-22.00"],
       kontak: {
         phone: "+62819-3062-0282",
         socialMedia: ["@nobrandcafe", "@nobrandcafeid", "@nobrandcafe_mdn"]
@@ -418,7 +418,7 @@ const restaurants = [
       alamat: "Centre Point Mall, Jl. Timor No.7A, Gg. Buntu, Kec. Medan Tim., Kota Medan, Sumatera Utara 20153",
       jarak: "1.1km",
       desc: "Legend of Xiao Long Bao",
-      jadwal: "Hari Biasa: 10.00-22.00\nSabtu: 10.00-22.00\nMinggu: 10.00-22.00",
+      jadwal: ["Hari Biasa: 10.00-22.00","Sabtu: 10.00-22.00","Minggu: 10.00-22.00"],
       kontak: {
         phone: "08116136662",
         socialMedia: ["@paradisedynastymdn", "@paradisedynastyid", "@paradisedynasty_mdn"]
@@ -435,7 +435,7 @@ const restaurants = [
       alamat: "Jl. T. Amir Hamzah No.85, Helvetia Tim., Kec. Medan Helvetia, Kota Medan, Sumatera Utara 20124",
       jarak: "4.1km",
       desc: "Expansive restaurant offering classic Javanese, Sundanese & seafood dishes, plus a garden & a pond.",
-      jadwal: "Hari Biasa: 11.00-22.00\nSabtu: 11.00-22.00\nMinggu: 11.00-22.00",
+      jadwal: ["Hari Biasa: 11.00-22.00","Sabtu: 11.00-22.00","Minggu: 11.00-22.00"],
       kontak: {
         phone: "(061) 8465515",
         socialMedia: ["@lemburkuringmedan", "@lemburkuringmdn", "@ofclemburkuring"]
@@ -452,7 +452,7 @@ const restaurants = [
       alamat: "Jl. Medan - Pematang Siantar No.329, Amplas, Kec. Percut Sei Tuan, Kabupaten Deli Serdang, Sumatera Utara 20148",
       jarak: "10.3km",
       desc: "Enjoy your moments with us",
-      jadwal: "Hari Biasa: 11.00-21.00\nSabtu: 11.00-21.00\nMinggu: 11.00-21.00",
+      jadwal: ["Hari Biasa: 11.00-21.00","Sabtu: 11.00-21.00","Minggu: 11.00-21.00"],
       kontak: {
         phone: "(061) 42778800",
         socialMedia: ["@restorankembang", "@restorankembangmdn", "@restorankembangofc"]
@@ -469,7 +469,7 @@ const restaurants = [
       alamat: "Jl. Medan - Pematang Siantar, Ujung Serdang, Kec. Tj. Morawa, Kabupaten Deli Serdang, Sumatera Utara 20362",
       jarak: "11km",
       desc: "Sophisticated, relaxed venue with outdoor seating serving cocktails & updated local classics",
-      jadwal: "Hari Biasa: 08.00-21.00\nSabtu: 08.00-21.00\nMinggu: 11.00-21.00",
+      jadwal: ["Hari Biasa: 08.00-21.00","Sabtu: 08.00-21.00","Minggu: 11.00-21.00"],
       kontak: {
         phone: "(061) 7944333",
         socialMedia: ["@budayaresto", "@budayarestoid", "@budayarestomdn"]
@@ -486,7 +486,7 @@ const restaurants = [
       alamat: "Jl. Hasanuddin No.1, Petisah Hulu, Kec. Medan Baru, Kota Medan, Sumatera Utara 20152",
       jarak: "2.8km",
       desc: "Laid-back eatery with a terrace serving classic meat dishes, curries, fish & desserts, plus drinks.",
-      jadwal: "Hari Biasa: 11.00-21.00\nSabtu: 11.00-21.00\nMinggu: 11.00-21.00",
+      jadwal: ["Hari Biasa: 11.00-21.00","Sabtu: 11.00-21.00","Minggu: 11.00-21.00"],
       kontak: {
         phone: "(061) 4534302",
         socialMedia: ["@kokisunda", "@kokisunda", "@kokisunda.mdn"]
@@ -503,7 +503,7 @@ const restaurants = [
       alamat: "Jl. Hasanuddin No.1, Petisah Hulu, Kec. Medan Baru, Kota Medan, Sumatera Utara 20153",
       jarak: "2.7km",
       desc: "HIDANGAN KHAS NUSANTARA",
-      jadwal: "Hari Biasa: 11.00-22.00\nSabtu: 11.00-22.00\nMinggu: 11.00-22.00",
+      jadwal: ["Hari Biasa: 11.00-22.00","Sabtu: 11.00-22.00","Minggu: 11.00-22.00"],
       kontak: {
         phone: "(061) 42011999",
         socialMedia: ["@pondokindahresto", "@restopondokindah", "@pondokindah.mdn"]
@@ -520,7 +520,7 @@ const restaurants = [
       alamat: "Jl. Kapten Patimura No.423, Darat, Kec. Medan Baru, Kota Medan, Sumatera Utara 20153",
       jarak: "2.5km",
       desc: "We Serve Only The Best Steak in Town",
-      jadwal: "Hari Biasa: 11.00-24.00\nSabtu: 11.00-24.00\nMinggu: 11.00-24.00",
+      jadwal: ["Hari Biasa: 11.00-24.00","Sabtu: 11.00-24.00","Minggu: 11.00-24.00"],
       kontak: {
         phone: "(061) 4531881",
         socialMedia: ["@thetradersmedan", "@thetradersmdn", "@thetraders_mdn"]
