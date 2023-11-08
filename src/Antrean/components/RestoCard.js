@@ -118,7 +118,7 @@ const RestoCard = (props) => {
                       : "red"
                   }
                 >
-                  {restaurant.esWaktu}{" "}
+                  ~{restaurant.esWaktu} menit {" "}
                   <span className="waktuAntri">waktu antri</span>
                 </Typography>
                 {/* conditional rendering icon juga berdasarkan keramaian */}

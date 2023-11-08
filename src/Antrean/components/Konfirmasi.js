@@ -1,33 +1,256 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
 import restaurants from "../data/Restaurants";
+import dayjs from "dayjs";
+import {
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  Container,
+  Typography,
+  Dialog,
+  TextField, DialogTitle,
+  DialogActions, DialogContent,
+} from "@mui/material";
+import DateRangeIcon from "@mui/icons-material/DateRange";
+import GroupsIcon from "@mui/icons-material/Groups";
+import AvTimerIcon from "@mui/icons-material/AvTimer";
+import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
+import { useNavigate } from "react-router-dom";
+import LoyaltyIcon from "@mui/icons-material/Loyalty";
 
 const Konfirmasi = () => {
+  //mengperbolehkan pengambilan data dari url
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
 
-  // mengambil data dari url
-  const id = queryParams.get("id")
+  // mengambil data dari URL
+  const id = queryParams.get("id");
+  const esWaktu = queryParams.get("esWaktu");
   const tanggal = queryParams.get("tanggal");
+  const tanggalRumus = queryParams.get("tanggalRumus");
   const waktu = queryParams.get("waktu");
   const jumlahOrang = queryParams.get("jumlahOrang");
   const kodePromo = queryParams.get("kodePromo");
 
-  // membandingkan data id dari url dgn data restoran agar dpt memakai data dari situ
+  // membandingkan data id dari URL dengan data restoran agar dapat menggunakan data dari situ
   const restaurant = restaurants.find(
     (restaurant) => restaurant.id === parseInt(id, 10)
   );
 
+  // Get the current time
+  const currentTime = new Date();
+  const intEsWaktu = parseInt(esWaktu);
+
+  // Assuming you have a time string in the format "HH MM"
+  const givenTimeString = waktu; // Example time string, "14 30" represents 2:30 PM
+
+  // Split the given time string into hours and minutes
+  const [givenHours, givenMinutes] = givenTimeString.split(" ").map(Number);
+
+  // Calculate the total minutes for both current and given time
+  const currentTotalMinutes =
+    currentTime.getHours() * 60 + currentTime.getMinutes();
+  const givenTotalMinutes = givenHours * 60 + givenMinutes;
+
+  // Calculate the time difference in minutes
+  let timeDifferenceMinutes =
+    givenTotalMinutes - currentTotalMinutes + intEsWaktu;
+
+  //selisih dari hari yg di inpiut dgn tgl hari ini
+  const dayMinutesDifference = -1 * dayjs().diff(tanggalRumus, "minutes");
+
+  // If the time difference is negative, add 1440 minutes (24 hours) to it
+  if (timeDifferenceMinutes < 0) {
+    timeDifferenceMinutes += 1440;
+  }
+
+  //jika hari yg di pilih adalah dimasa depan, tambahkan menitnya
+  if (dayMinutesDifference > 0) {
+    timeDifferenceMinutes += dayMinutesDifference;
+  }
+
+  //jika menit melebihi 60, maka diubah menjadi 1 jam
+  let timeDifferenceHours = 0;
+  if (timeDifferenceMinutes >= 60) {
+    timeDifferenceHours = Math.floor(timeDifferenceMinutes / 60);
+    timeDifferenceMinutes %= 60;
+  }
+
+  let timeDifferenceDays = 0;
+  if (timeDifferenceHours >= 24) {
+    timeDifferenceDays = Math.floor(timeDifferenceHours / 24);
+    timeDifferenceHours %= 24;
+  }
+
+  //angka rng karena blm ada server :p
+  const [randomNumber, setRandomNumber] = useState(null);
+
+  useEffect(() => {
+    const min = 1;
+    const max = 999;
+    const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+    const formattedRandomNumber = randomNum.toString().padStart(3, "0");
+    setRandomNumber(formattedRandomNumber);
+  }, []);
+
+  /* navigasi ke beranda */
+  const navigate = useNavigate();
+
+  //state popup
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  //buka tutup popup
+  const openPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
+  };
+  
+  //handle konfirmasi
+  const handleConfirmation = () => {
+    // Add your confirmation logic here
+    // For example, you can make an API call to confirm the reservation
+    // Once the confirmation is successful, you can navigate to another page
+    // using the navigate function
+    navigate("/selamat!"); // Replace with your desired destination
+    closePopup();
+  };
+
+
   return (
     <>
-    {/* <Navbar /> */}
-      <h1>{restaurant.nama}</h1>
+      {/* <Navbar /> */}
+      <Typography variant="h4">{restaurant.nama}</Typography>
+      <Container
+        maxWidth="x1"
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          marginTop: "3vh",
+        }}
+      >
+        <Card sx={{ flex: "0 0 auto", width: "50vh" }}>
+          <CardHeader
+            title="Info Reservasi"
+            sx={{ backgroundColor: "#7472cc", color: "white" }}
+          ></CardHeader>
+          <CardContent
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              padding: "10",
+              justifyContent: "space-between",
+              gap: "1vh",
+            }}
+          >
+            <Typography>
+              <DateRangeIcon color="primary" /> Tanggal Antri: {tanggal}
+            </Typography>
+            <Typography>
+              <AvTimerIcon color="primary" />
+              Estimasi Waktu Antri: ~
+              {timeDifferenceDays > 0 ? `${timeDifferenceDays} hari ` : ""}
+              {timeDifferenceHours > 0 ? `${timeDifferenceHours} jam ` : ""}
+              {timeDifferenceMinutes > 0
+                ? `${timeDifferenceMinutes} menit`
+                : "segera"}
+            </Typography>
+            <Typography>
+              <GroupsIcon color="primary" /> Jumlah Orang: {jumlahOrang}
+            </Typography>
+            <Typography>
+              {randomNumber !== null && (
+                <p>
+                  <ConfirmationNumberIcon color="primary" /> No. Antrian:{" "}
+                  {randomNumber}
+                </p>
+              )}
+            </Typography>
+            <Typography></Typography>
+          </CardContent>
+        </Card>
+
+        <Card sx={{ flex: "0 0 auto", width: "50vh", textAlign: "right" }}>
+          <CardHeader
+            title="Kontak Pengguna"
+            sx={{ backgroundColor: "#7472cc", color: "white" }}
+          ></CardHeader>
+          <CardContent
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              padding: "10",
+              gap: "1vh",
+            }}
+          >
+            <TextField
+              label="Nama"
+              variant="standard"
+              value="Antoni"
+              placeholder="Masukkan nama..."
+              required
+              fullWidth
+            />
+
+            <TextField
+              label="No. HP"
+              variant="standard"
+              placeholder="(Opsional) Masukkan nomor HP..."
+              fullWidth
+            />
+
+            <TextField
+              label="Email"
+              variant="standard"
+              value="Antoni@gmail.com"
+              placeholder="Masukkan email..."
+              required
+              fullWidth
+            />
+          </CardContent>
+        </Card>
+      </Container>
+      <Button variant="contained"  onClick={openPopup}>Konfirmasi</Button>
+      <Button
+        variant="text"
+        color="error"
+        onClick={() => {
+          navigate(`/restoran/${id}`);
+        }}
+      >
+        Kembali
+      </Button>
+
+      <Dialog open={isPopupOpen} onClose={closePopup}>
+        <DialogTitle>Confirmation Popup</DialogTitle>
+        <DialogContent>
+          {/* Add content for your confirmation message */}
+          <Typography variant="body1">
+            Are you sure you want to confirm the reservation?
+          </Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={closePopup} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleConfirmation} color="primary">
+            Confirm
+          </Button>
+        </DialogActions>
+      </Dialog>
+      {/*       <h1>{restaurant.nama}</h1>
       <p>Tanggal: {tanggal}</p>
-      <p>Waktu: {waktu}</p>
+      <p>
+        Estimasi Waktu Antri: ~{timeDifferenceDays} hari {timeDifferenceHours} jam {timeDifferenceMinutes} menit
+      </p>
       <p>Jumlah Orang: {jumlahOrang}</p>
       <p>Kode Promo: {kodePromo}</p>
-      {/* Display or use the extracted values as needed */}
+       */}
     </>
   );
 };
