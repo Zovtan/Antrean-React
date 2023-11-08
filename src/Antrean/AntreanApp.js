@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import RestoDetails from "./components/RestoDetails";
 import NotFound from "./components/NotFound"; // Import the Not Found component
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Konfirmasi from "./components/Konfirmasi";
 
 const AntreanApp = () => {
   //theme utama Antrean
@@ -24,13 +25,15 @@ const AntreanApp = () => {
 
   return (
     <ThemeProvider theme={theme}>
-    <BrowserRouter>
-      <Routes>
-        <Route index path="/" element={<HomeLayout />} />
-        <Route path="/restoran/:restaurantId" element={<RestoDetails />} />
-        <Route path="*" element={<NotFound />} /> {/* Catch-all route for Not Found */}
-      </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route index path="/" element={<HomeLayout />} />
+          <Route path="/restoran/:restaurantId" element={<RestoDetails />} />
+          <Route path="/restoran/:restaurantId/konfirmasi" element={<Konfirmasi />} />
+          <Route path="*" element={<NotFound />} />
+          {/* Catch-all route for Not Found */}
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   );
 };
