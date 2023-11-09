@@ -56,7 +56,7 @@ const RestoDetails = () => {
 
   //state input eror
   const [jumlahOrangError, setJumlahOrangError] = useState("");
-/*   const [tanggalError, setTanggalError] = useState("");
+  /*   const [tanggalError, setTanggalError] = useState("");
   const [waktuError, setWaktuError] = useState("");
  */
   const handleFormSubmit = () => {
@@ -122,7 +122,12 @@ const RestoDetails = () => {
           backgroundColor: "#d9e5ff",
         }}
       >
-        <img src={restaurant.img} alt={restaurant.nama} />
+        <Box
+          component="img"
+          src={restaurant.img}
+          alt={restaurant.nama}
+          sx={{ width: "80vh", height: "40vh" }}
+        />
       </Container>
 
       <Container
@@ -130,7 +135,6 @@ const RestoDetails = () => {
         sx={{
           display: "flex",
           justifyContent: "space-between",
-
         }}
       >
         <span>
@@ -152,11 +156,13 @@ const RestoDetails = () => {
       </Container>
 
       <Container
+      disableGutters
         maxWidth="x1"
         sx={{
           display: "flex",
           justifyContent: "space-between",
           marginTop: "3vh",
+          padding: "0 10%"
         }}
       >
         <Card sx={{ flex: "0 0 auto", width: "50vh" }}>
@@ -184,7 +190,15 @@ const RestoDetails = () => {
             </Typography>
           </CardContent>
         </Card>
-        <Box sx={{display:"flex", flexDirection:"column", width:"50vh", justifyContent:"center", alignItems:"center"}}> 
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            width: "50vh",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <Typography
             variant="h5"
             color={
@@ -252,6 +266,15 @@ const RestoDetails = () => {
         >
           Antri
         </Button>
+        <Button
+          variant="text"
+          color="error"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          Kembali
+        </Button>
       </Container>
 
       <Dialog open={isFormOpen} onClose={() => setIsFormOpen(false)}>
@@ -265,7 +288,7 @@ const RestoDetails = () => {
                 value={tanggal}
                 onChange={(date) => setTanggal(date)}
                 format="DD-MM-YYYY"
-/*                 error={tanggalError.length > 0}
+                /*                 error={tanggalError.length > 0}
                 helperText={tanggalError} */
               />
               <TimePicker
@@ -273,7 +296,7 @@ const RestoDetails = () => {
                 sx={{ marginTop: "3vh" }}
                 value={waktu}
                 onChange={(time) => setWaktu(time)}
-/*                 error={waktuError.length > 0}
+                /*                 error={waktuError.length > 0}
                 helperText={waktuError} */
               />
             </div>
@@ -315,7 +338,6 @@ const RestoDetails = () => {
           </Button>
         </DialogActions>
       </Dialog>
-      
     </>
   );
 };

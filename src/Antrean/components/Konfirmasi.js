@@ -11,8 +11,12 @@ import {
   Container,
   Typography,
   Dialog,
-  TextField, DialogTitle,
-  DialogActions, DialogContent,
+  TextField,
+  DialogTitle,
+  DialogActions,
+  DialogContent,
+  CardMedia,
+  Box,
 } from "@mui/material";
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import GroupsIcon from "@mui/icons-material/Groups";
@@ -20,6 +24,8 @@ import AvTimerIcon from "@mui/icons-material/AvTimer";
 import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
 import { useNavigate } from "react-router-dom";
 import LoyaltyIcon from "@mui/icons-material/Loyalty";
+import KontakImg from "../assets/kontak info.png";
+import InfoReservasi from "../assets/reservasi info.png"
 
 const Konfirmasi = () => {
   //mengperbolehkan pengambilan data dari url
@@ -63,9 +69,9 @@ const Konfirmasi = () => {
   const dayMinutesDifference = -1 * dayjs().diff(tanggalRumus, "minutes");
 
   // If the time difference is negative, add 1440 minutes (24 hours) to it
-  if (timeDifferenceMinutes < 0) {
+  /*   if (timeDifferenceMinutes < 0) {
     timeDifferenceMinutes += 1440;
-  }
+  } */
 
   //jika hari yg di pilih adalah dimasa depan, tambahkan menitnya
   if (dayMinutesDifference > 0) {
@@ -110,7 +116,7 @@ const Konfirmasi = () => {
   const closePopup = () => {
     setIsPopupOpen(false);
   };
-  
+
   //handle konfirmasi
   const handleConfirmation = () => {
     // Add your confirmation logic here
@@ -121,19 +127,22 @@ const Konfirmasi = () => {
     closePopup();
   };
 
-
   return (
     <>
       {/* <Navbar /> */}
       <Typography variant="h4">{restaurant.nama}</Typography>
       <Container
+        disableGutters
         maxWidth="x1"
         sx={{
           display: "flex",
-          justifyContent: "space-between",
+          justifyContent:"space-between",
           marginTop: "3vh",
+          padding: "0 10%"
         }}
       >
+        <Box>
+        <Box component="img" src={InfoReservasi} alt="info reservasi" sx={{width:"50vh", height:"23vh"}}/>
         <Card sx={{ flex: "0 0 auto", width: "50vh" }}>
           <CardHeader
             title="Info Reservasi"
@@ -144,7 +153,6 @@ const Konfirmasi = () => {
               display: "flex",
               flexDirection: "column",
               padding: "10",
-              justifyContent: "space-between",
               gap: "1vh",
             }}
           >
@@ -158,7 +166,10 @@ const Konfirmasi = () => {
               {timeDifferenceHours > 0 ? `${timeDifferenceHours} jam ` : ""}
               {timeDifferenceMinutes > 0
                 ? `${timeDifferenceMinutes} menit`
-                : "segera"}
+                : ""}
+              {timeDifferenceMinutes < 0
+                ? `${timeDifferenceMinutes} menit`
+                : ""}
             </Typography>
             <Typography>
               <GroupsIcon color="primary" /> Jumlah Orang: {jumlahOrang}
@@ -173,49 +184,54 @@ const Konfirmasi = () => {
             </Typography>
             <Typography></Typography>
           </CardContent>
-        </Card>
+        </Card></Box>
 
-        <Card sx={{ flex: "0 0 auto", width: "50vh", textAlign: "right" }}>
-          <CardHeader
-            title="Kontak Pengguna"
-            sx={{ backgroundColor: "#7472cc", color: "white" }}
-          ></CardHeader>
-          <CardContent
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              padding: "10",
-              gap: "1vh",
-            }}
-          >
-            <TextField
-              label="Nama"
-              variant="standard"
-              value="Antoni"
-              placeholder="Masukkan nama..."
-              required
-              fullWidth
-            />
+        <Box>
+          <Box component="img" src={KontakImg} alt="dekorasi kontak" sx={{width:"50vh", height:"23vh"}}/>
+          <Card sx={{ flex: "0 0 auto", width: "50vh", textAlign: "right" }}>
+            <CardHeader
+              title="Kontak Pengguna"
+              sx={{ backgroundColor: "#7472cc", color: "white" }}
+            ></CardHeader>
+            <CardContent
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                padding: "10",
+                gap: "1vh",
+              }}
+            >
+              <TextField
+                label="Nama"
+                variant="standard"
+                value="Antoni"
+                placeholder="Masukkan nama..."
+                required
+                fullWidth
+              />
 
-            <TextField
-              label="No. HP"
-              variant="standard"
-              placeholder="(Opsional) Masukkan nomor HP..."
-              fullWidth
-            />
+              <TextField
+                label="No. HP"
+                variant="standard"
+                placeholder="(Opsional) Masukkan nomor HP..."
+                fullWidth
+              />
 
-            <TextField
-              label="Email"
-              variant="standard"
-              value="Antoni@gmail.com"
-              placeholder="Masukkan email..."
-              required
-              fullWidth
-            />
-          </CardContent>
-        </Card>
+              <TextField
+                label="Email"
+                variant="standard"
+                value="Antoni@gmail.com"
+                placeholder="Masukkan email..."
+                required
+                fullWidth
+              />
+            </CardContent>
+          </Card>
+        </Box>
       </Container>
-      <Button variant="contained"  onClick={openPopup}>Konfirmasi</Button>
+      <Button variant="contained" onClick={openPopup}>
+        Konfirmasi
+      </Button>
       <Button
         variant="text"
         color="error"
@@ -227,19 +243,19 @@ const Konfirmasi = () => {
       </Button>
 
       <Dialog open={isPopupOpen} onClose={closePopup}>
-        <DialogTitle>Confirmation Popup</DialogTitle>
+        <DialogTitle>Apakah Semua Sudah Sesuai?</DialogTitle>
         <DialogContent>
           {/* Add content for your confirmation message */}
           <Typography variant="body1">
-            Are you sure you want to confirm the reservation?
+            Tekan ya untuk melanjutkan
           </Typography>
         </DialogContent>
         <DialogActions>
-          <Button onClick={closePopup} color="primary">
-            Cancel
+          <Button onClick={closePopup} color="error">
+            Tidak
           </Button>
           <Button onClick={handleConfirmation} color="primary">
-            Confirm
+            Ya
           </Button>
         </DialogActions>
       </Dialog>

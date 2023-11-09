@@ -290,23 +290,6 @@ const restaurants = [
     },
     {
       id: 18,
-      img: "https://majalah.ottenstatic.com/uploads/2021/10/DDB43DC7-9EF9-420D-BE0A-252A842F7FEA.jpg",
-      nama: "KOKORO",
-      esWaktu: 4,
-      keramaian: "sepi",
-      kategori:"terdekat",
-      rating:4,
-      alamat: "Jl. Madong Lubis No.34a, Pandau Hulu I, Kec. Medan Kota, Kota Medan, Sumatera Utara 20233",
-      jarak: "550m",
-      desc: "Speciality Coffee House with Japanese Scandinavian Style",
-      jadwal: ["Hari Biasa: 07.30-22.00","Sabtu: 07.30-22.00","Minggu: 07.30-22.00"],
-      kontak: {
-        phone: "0811-6149-669",
-        socialMedia: ["@Kokorocoffeeid", "@Kokorocoffeemdn", "@Kokorocoffee_id"]
-      },
-    },
-    {
-      id: 18,
       img: "https://asset.kompas.com/crops/euAY7Se4xZeJZO5RYzViWIncExw=/0x0:0x0/780x390/data/photo/2023/09/27/65140c88112d0.jpg",
       nama: "Mie Gacoan",
       esWaktu: 30,
@@ -315,7 +298,7 @@ const restaurants = [
       rating:5,
       alamat: "Jl. Williem Iskandar, Kenangan Baru, Kec. Percut Sei Tuan, Kota Medan, Sumatera Utara",
       jarak: "1km",
-      desc: "Jagonya Mie Pedas No.1 Diindoensia",
+      desc: "Jagonya Mie Pedas No.1 Di Indoensia",
       jadwal: ["Hari Biasa: 09.00-23.00","Sabtu: 09.00-23.00","Minggu: 09.00-23.00"],
       kontak: {
         phone: "0897-9192-129",
