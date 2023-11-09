@@ -18,7 +18,7 @@ import {
   TextField,
   DialogActions,
   InputAdornment,
-  Box,
+  Box, Alert, AlertTitle,
 } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import GpsFixedIcon from "@mui/icons-material/GpsFixed";
@@ -56,12 +56,15 @@ const RestoDetails = () => {
 
   //state input eror
   const [jumlahOrangError, setJumlahOrangError] = useState("");
-  /*   const [tanggalError, setTanggalError] = useState("");
+  const [tanggalError, setTanggalError] = useState("");
   const [waktuError, setWaktuError] = useState("");
- */
+
+  
   const handleFormSubmit = () => {
+    //apakah form valid?
     let isFormValid = true;
 
+    //validasi jumlah org
     if (jumlahOrang <= 0 || jumlahOrang > 20) {
       // Disable submit when jumlahOrang is not a positive number or above 20.
       setJumlahOrangError("Jumlah orang harus berada antara 1 dan 20.");
@@ -71,22 +74,30 @@ const RestoDetails = () => {
       setJumlahOrangError("");
     }
 
-    /* terlalu ketat */
-    /* const currentTime = dayjs();
-    if (
-      tanggal.isBefore(currentTime) ||
-      (tanggal.isSame(currentTime) && waktu.isBefore(currentTime))
-    ) {
-      // Disable submit when a past time/date is picked.
-      setTanggalError(
-        "Tidak dapat memilih tanggal atau waktu yang sudah lewat."
-      );
-      setWaktuError("Tidak dapat memilih tanggal atau waktu yang sudah lewat.");
+    //validasi tanggal
+    const currentDate = dayjs().startOf("day"); // Set the time components to the start of the day
+    const selectedDate = tanggal.startOf("day"); // Set the time components of the selected date to the start of the day
+
+    if (selectedDate.isBefore(currentDate)) {
+      // Disable submit when a past date is picked.
+      setTanggalError("Tidak dapat memilih tanggal yang sudah lewat");
       isFormValid = false;
+      console.log(currentDate);
     } else {
       setTanggalError("");
+    }
+
+    //validasi waktu tapi diberi kelegaan 5 menit agar tdk ditolak pada detik pertama di buat form 
+    const currentTime = dayjs().subtract(5, "minutes");
+    const selectedTime = waktu; // Set the time components to the start of the minute
+  
+    if (selectedTime.isBefore(currentTime)) {
+      // Disable submit when a time within the 5-minute window is picked.
+      setWaktuError("Tidak dapat memilih waktu yang sudah lewat");
+      isFormValid = false;
+    } else {
       setWaktuError("");
-    } */
+    }
 
     // mengirim data melalui url agar dapat dipakai ulang
     if (isFormValid) {
@@ -156,13 +167,13 @@ const RestoDetails = () => {
       </Container>
 
       <Container
-      disableGutters
+        disableGutters
         maxWidth="x1"
         sx={{
           display: "flex",
           justifyContent: "space-between",
           marginTop: "3vh",
-          padding: "0 10%"
+          padding: "0 10%",
         }}
       >
         <Card sx={{ flex: "0 0 auto", width: "50vh" }}>
@@ -288,16 +299,16 @@ const RestoDetails = () => {
                 value={tanggal}
                 onChange={(date) => setTanggal(date)}
                 format="DD-MM-YYYY"
-                /*                 error={tanggalError.length > 0}
-                helperText={tanggalError} */
+                error={tanggalError.length > 0}
+                helperText={tanggalError}
               />
               <TimePicker
                 label="Waktu"
                 sx={{ marginTop: "3vh" }}
                 value={waktu}
                 onChange={(time) => setWaktu(time)}
-                /*                 error={waktuError.length > 0}
-                helperText={waktuError} */
+                error={waktuError.length > 0}
+                helperText={waktuError}
               />
             </div>
           </LocalizationProvider>
@@ -338,6 +349,15 @@ const RestoDetails = () => {
           </Button>
         </DialogActions>
       </Dialog>
+
+{/*       <>
+      {isFormValid ? null : (
+        <Alert severity="error">
+          <AlertTitle>Error</AlertTitle>
+          Jangan isi waktu masa lalu!
+        </Alert>
+      )}
+    </> */}
     </>
   );
 };
