@@ -5,6 +5,7 @@ import RestoCard from "./RestoCard";
 import restaurants from "../data/Restaurants";
 import { Typography } from "@mui/material";
 import SearchResto from "./SearchResto";
+import Footer from "./Footer";
 
 function HomeLayout() {
   // Filter restaurants by category, e.g., "dekat"
@@ -48,6 +49,7 @@ function HomeLayout() {
           Restoran Populer
         </Typography>
         <RestoCard filteredRestaurants={filteredRestaurantsPopuler} />
+        <Footer/>
       </>
   );
 }

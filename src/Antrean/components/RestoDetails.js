@@ -18,7 +18,9 @@ import {
   TextField,
   DialogActions,
   InputAdornment,
-  Box, Alert, AlertTitle,
+  Box,
+  Alert,
+  AlertTitle,
 } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import GpsFixedIcon from "@mui/icons-material/GpsFixed";
@@ -56,10 +58,7 @@ const RestoDetails = () => {
 
   //state input eror
   const [jumlahOrangError, setJumlahOrangError] = useState("");
-  const [tanggalError, setTanggalError] = useState("");
-  const [waktuError, setWaktuError] = useState("");
 
-  
   const handleFormSubmit = () => {
     //apakah form valid?
     let isFormValid = true;
@@ -70,33 +69,35 @@ const RestoDetails = () => {
       setJumlahOrangError("Jumlah orang harus berada antara 1 dan 20.");
       isFormValid = false;
       return;
-    } else {
-      setJumlahOrangError("");
     }
 
-    //validasi tanggal
+   
+      // Validasi kelengkapan
+  if (!tanggal.isValid() || !waktu.isValid()) {
+    // Disable submit when date or time is not valid. pakai alert karna g bisa pake helper text
+    alert("Mohon isi tanggal dan waktu dengan lengkap")
+    isFormValid = false;
+    return;
+  }
+  
+ //validasi tanggal masa lalu
     const currentDate = dayjs().startOf("day"); // Set the time components to the start of the day
     const selectedDate = tanggal.startOf("day"); // Set the time components of the selected date to the start of the day
 
     if (selectedDate.isBefore(currentDate)) {
       // Disable submit when a past date is picked.
-      setTanggalError("Tidak dapat memilih tanggal yang sudah lewat");
+      alert("Tidak dapat memilih tanggal yang sudah lewat")
       isFormValid = false;
-      console.log(currentDate);
-    } else {
-      setTanggalError("");
     }
 
-    //validasi waktu tapi diberi kelegaan 5 menit agar tdk ditolak pada detik pertama di buat form 
+    //validasi waktu masa lalu tapi diberi kelegaan 5 menit agar tdk ditolak pada detik pertama di buat form
     const currentTime = dayjs().subtract(5, "minutes");
     const selectedTime = waktu; // Set the time components to the start of the minute
-  
+
     if (selectedTime.isBefore(currentTime)) {
       // Disable submit when a time within the 5-minute window is picked.
-      setWaktuError("Tidak dapat memilih waktu yang sudah lewat");
+      alert("Tidak dapat memilih waktu yang sudah lewat")
       isFormValid = false;
-    } else {
-      setWaktuError("");
     }
 
     // mengirim data melalui url agar dapat dipakai ulang
@@ -131,13 +132,14 @@ const RestoDetails = () => {
           display: "flex",
           justifyContent: "center",
           backgroundColor: "#d9e5ff",
+          mt: "3em",
         }}
       >
         <Box
           component="img"
           src={restaurant.img}
           alt={restaurant.nama}
-          sx={{ width: "80vh", height: "40vh" }}
+          sx={{ width: {xs:"80vh", md:"120vh"}, height: {xs:"40vh", md:"45vh"} }}
         />
       </Container>
 
@@ -146,6 +148,8 @@ const RestoDetails = () => {
         sx={{
           display: "flex",
           justifyContent: "space-between",
+          mt:"2vh",
+          padding:{xs:"none", md:"0 15vh"},
         }}
       >
         <span>
@@ -171,12 +175,56 @@ const RestoDetails = () => {
         maxWidth="x1"
         sx={{
           display: "flex",
-          justifyContent: "space-between",
+          justifyContent: "center",
+          flexDirection: { xs: "column", md: "row" },
+          alignItems: {xs:"center", md:"revert"},
           marginTop: "3vh",
-          padding: "0 10%",
+          gap: "3vh",
+          padding:{xs:"0", md:"0vh 5vh"}
         }}
       >
-        <Card sx={{ flex: "0 0 auto", width: "50vh" }}>
+        <Box
+          sx={{
+            display: { xs: "flex", md: "none" },
+            flexDirection: "column",
+            width: "50vh",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <>
+            {restaurant.keramaian === "sepi" && (
+              <PersonIcon sx={{ fontSize: 120, color: "green" }} />
+            )}{" "}
+            {restaurant.keramaian === "sedang" && (
+              <PeopleIcon sx={{ fontSize: 120, color: "#ffc400" }} />
+            )}{" "}
+            {restaurant.keramaian === "ramai" && (
+              <GroupsIcon sx={{ fontSize: 120, color: "red" }} />
+            )}{" "}
+            <Typography
+              variant="h5"
+              color={
+                restaurant.keramaian === "sepi"
+                  ? "green"
+                  : restaurant.keramaian === "sedang"
+                  ? "#ffc400"
+                  : "red"
+              }
+            >
+              ~{restaurant.esWaktu} menit{" "}
+              <span className="waktuAntri">waktu antri</span>
+            </Typography>
+          </>
+        </Box>
+
+        <Card
+          sx={{
+            flex: "0 0 auto",
+            width: {xs:"80%",md:"48vh"},
+            textAlign: { xs: "center", md: "start" },
+          }}
+        >
           <CardHeader
             title="Deskripsi"
             sx={{ backgroundColor: "#7472cc", color: "white" }}
@@ -186,7 +234,6 @@ const RestoDetails = () => {
               display: "flex",
               flexDirection: "column",
               padding: "10",
-              justifyContent: "space-between",
               gap: "1vh",
             }}
           >
@@ -201,15 +248,27 @@ const RestoDetails = () => {
             </Typography>
           </CardContent>
         </Card>
+
         <Box
           sx={{
-            display: "flex",
+            display: { xs: "none", md: "flex" },
             flexDirection: "column",
             width: "50vh",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
+          <>
+            {restaurant.keramaian === "sepi" && (
+              <PersonIcon sx={{ fontSize: 120, color: "green" }} />
+            )}{" "}
+            {restaurant.keramaian === "sedang" && (
+              <PeopleIcon sx={{ fontSize: 120, color: "#ffc400" }} />
+            )}{" "}
+            {restaurant.keramaian === "ramai" && (
+              <GroupsIcon sx={{ fontSize: 120, color: "red" }} />
+            )}
+          </>{" "}
           <Typography
             variant="h5"
             color={
@@ -223,20 +282,15 @@ const RestoDetails = () => {
             ~{restaurant.esWaktu} menit{" "}
             <span className="waktuAntri">waktu antri</span>
           </Typography>
-          <div>
-            {restaurant.keramaian === "sepi" && (
-              <PersonIcon sx={{ fontSize: 120, color: "green" }} />
-            )}{" "}
-            {restaurant.keramaian === "sedang" && (
-              <PeopleIcon sx={{ fontSize: 120, color: "#ffc400" }} />
-            )}{" "}
-            {restaurant.keramaian === "ramai" && (
-              <GroupsIcon sx={{ fontSize: 120, color: "red" }} />
-            )}
-          </div>
         </Box>
 
-        <Card sx={{ flex: "0 0 auto", width: "50vh", textAlign: "right" }}>
+        <Card
+          sx={{
+            flex: "0 0 auto",
+            width: {xs:"80%",md:"48vh"},
+            textAlign: { xs: "center", md: "end" },
+          }}
+        >
           <CardHeader
             title="Kontak"
             sx={{ backgroundColor: "#7472cc", color: "white" }}
@@ -260,14 +314,11 @@ const RestoDetails = () => {
         </Card>
       </Container>
 
-      <Container
-        maxWidth="x1"
+      <Box
         sx={{
           display: "flex",
           justifyContent: "center",
-          margin: "5vh",
-          marginTop: "3vh",
-          marginLeft: "0",
+          margin: "5vh 0vh"
         }}
       >
         <Button
@@ -277,16 +328,20 @@ const RestoDetails = () => {
         >
           Antri
         </Button>
-        <Button
+      </Box>
+
+      <Box sx={{ml:"3vh", pb:"3vh"}}>
+      <Button
           variant="text"
           color="error"
+          size="large"
           onClick={() => {
             navigate("/");
           }}
         >
           Kembali
         </Button>
-      </Container>
+      </Box>
 
       <Dialog open={isFormOpen} onClose={() => setIsFormOpen(false)}>
         <DialogTitle>Info Reservasi</DialogTitle>
@@ -297,18 +352,16 @@ const RestoDetails = () => {
                 label="Tanggal"
                 sx={{ marginTop: "3vh" }}
                 value={tanggal}
-                onChange={(date) => setTanggal(date)}
+                onChange={(date) => setTanggal(date || dayjs())} //jika value default dihapus semua, maka akan di tambah ulang utk menhindari null. input biasa tdk terpengaruh
                 format="DD-MM-YYYY"
-                error={tanggalError.length > 0}
-                helperText={tanggalError}
+                required
               />
               <TimePicker
                 label="Waktu"
                 sx={{ marginTop: "3vh" }}
                 value={waktu}
-                onChange={(time) => setWaktu(time)}
-                error={waktuError.length > 0}
-                helperText={waktuError}
+                onChange={(time) => setWaktu(time || dayjs())}
+                required
               />
             </div>
           </LocalizationProvider>
@@ -323,6 +376,7 @@ const RestoDetails = () => {
             onChange={(e) => setJumlahOrang(e.target.value)}
             error={jumlahOrangError.length > 0}
             helperText={jumlahOrangError}
+            required
           />
 
           <TextField
@@ -341,7 +395,7 @@ const RestoDetails = () => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setIsFormOpen(false)} color="primary">
+          <Button onClick={() => setIsFormOpen(false)} color="error">
             Cancel
           </Button>
           <Button onClick={handleFormSubmit} color="primary">
@@ -350,7 +404,9 @@ const RestoDetails = () => {
         </DialogActions>
       </Dialog>
 
-{/*       <>
+      
+
+      {/*       <>
       {isFormValid ? null : (
         <Alert severity="error">
           <AlertTitle>Error</AlertTitle>

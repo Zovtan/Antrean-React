@@ -70,6 +70,7 @@ const RestoCard = (props) => {
   return (
     <Container
       maxWidth="x1"
+      disableGutters
       className="cardCont"
       sx={{
         display: "flex",
@@ -79,6 +80,7 @@ const RestoCard = (props) => {
         scrollbarWidth: "none",
         margin: "0 auto",
         mt: "5vh",
+        padding:"0 5vh"
       }}
     >
       <Slider {...settings}>

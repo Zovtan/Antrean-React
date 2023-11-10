@@ -92,16 +92,17 @@ const SearchResto = (props) => {
 
   return (
     <>
-      <Box sx={{ display: "flex", alignItems: "flex-end" }}>
+      <Box sx={{ display: "flex", alignItems: "flex-end", justifyContent:"center", marginTop:"2em" }}>
         <SearchIcon sx={{ color: "action.active", mr: 1, my: 0.5 }} />
-        <TextField id="input-with-sx" label="Search" variant="standard"         type="text"
-        placeholder="Search..."
+        <TextField id="input-with-sx" label="Cari Restoran" variant="standard" type="text"
+        placeholder="Restoran..."
         value={searchTerm}
         onChange={handleSearchChange}/>
       </Box>
       {searchTerm && ( // Hanya render hasil search ketika ada isi
         <Container
           className="cardCont"
+          disableGutters
           maxWidth="x1"
           sx={{
             display: "flex",
@@ -111,11 +112,12 @@ const SearchResto = (props) => {
             scrollbarWidth: "none",
             margin: "0 auto",
             mt: "5vh",
+            pl:"5vh"
           }}
         >
           <Typography
             variant="h4"
-            sx={{ fontWeight: "bolder", mb: "5vh", ml: "2vh" }}
+            sx={{ fontWeight: "bolder", mb: "5vh" }}
           >
             Hasil Carian
           </Typography>

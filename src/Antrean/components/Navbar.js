@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-
+import logo from "../assets/Logo.png"
 
 
 const pages = ['Beranda', 'Restoran', 'Riwayat'];
@@ -42,7 +42,7 @@ function Navbar() {
     <AppBar position="fixed">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <Box component="img" src={logo} sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, width:"3em", translate:"0.5em 0.3em" }} />
           <Typography
             variant="h6"
             noWrap
@@ -58,7 +58,7 @@ function Navbar() {
               textDecoration: 'none',
             }}
           >
-            ANTREAN
+            ANTRE
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -97,7 +97,7 @@ function Navbar() {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <Box component="img" src={logo} sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, width:"3em", translate:"0.5em 0.3em" }} />
           <Typography
             variant="h5"
             noWrap
@@ -114,7 +114,7 @@ function Navbar() {
               textDecoration: 'none',
             }}
           >
-            ANTREAN
+            ANTRE
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
@@ -131,7 +131,7 @@ function Navbar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Antoni" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
             <Menu

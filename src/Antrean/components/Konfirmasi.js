@@ -15,7 +15,6 @@ import {
   DialogTitle,
   DialogActions,
   DialogContent,
-  CardMedia,
   Box,
 } from "@mui/material";
 import DateRangeIcon from "@mui/icons-material/DateRange";
@@ -23,9 +22,8 @@ import GroupsIcon from "@mui/icons-material/Groups";
 import AvTimerIcon from "@mui/icons-material/AvTimer";
 import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
 import { useNavigate } from "react-router-dom";
-import LoyaltyIcon from "@mui/icons-material/Loyalty";
 import KontakImg from "../assets/kontak info.png";
-import InfoReservasi from "../assets/reservasi info.png"
+import InfoReservasi from "../assets/reservasi info.png";
 
 const Konfirmasi = () => {
   //mengperbolehkan pengambilan data dari url
@@ -129,69 +127,132 @@ const Konfirmasi = () => {
 
   return (
     <>
-      {/* <Navbar /> */}
-      <Typography variant="h4">{restaurant.nama}</Typography>
+      <Navbar />
+      <Typography variant="h4" mt="5rem" textAlign="center" fontWeight="bolder">
+        {restaurant.nama}
+      </Typography>
       <Container
         disableGutters
         maxWidth="x1"
         sx={{
           display: "flex",
-          justifyContent:"space-between",
+          justifyContent: "center",
+          flexDirection: { xs: "column", md: "row" },
+          alignItems: { xs: "center", md: "revert" },
           marginTop: "3vh",
-          padding: "0 10%"
+          gap: "10vh",
+          padding: { xs: "0", md: "0vh 5vh" },
         }}
       >
-        <Box>
-        <Box component="img" src={InfoReservasi} alt="info reservasi" sx={{width:"50vh", height:"23vh"}}/>
-        <Card sx={{ flex: "0 0 auto", width: "50vh" }}>
-          <CardHeader
-            title="Info Reservasi"
-            sx={{ backgroundColor: "#7472cc", color: "white" }}
-          ></CardHeader>
-          <CardContent
+        <Box
+          sx={{
+            display: "flex",
+            width: { xs: "100%", md: "30%" },
+            flexDirection: "column",
+            alignItems: { xs: "center", md: "none" },
+          }}
+        >
+          <Box
+            component="img"
+            src={InfoReservasi}
+            alt="info reservasi"
             sx={{
-              display: "flex",
-              flexDirection: "column",
-              padding: "10",
-              gap: "1vh",
+              width: "55vh",
+              height: "25vh",
+              display: { xs: "none", md: "flex" },
+            }}
+          />
+          <Card
+            sx={{
+              flex: "0 0 auto",
+              width: { xs: "80%", md: "55vh" },
+              minHeight: { xs: "none", md: "40vh" },
             }}
           >
-            <Typography>
-              <DateRangeIcon color="primary" /> Tanggal Antri: {tanggal}
-            </Typography>
-            <Typography>
-              <AvTimerIcon color="primary" />
-              Estimasi Waktu Antri: ~
-              {timeDifferenceDays > 0 ? `${timeDifferenceDays} hari ` : ""}
-              {timeDifferenceHours > 0 ? `${timeDifferenceHours} jam ` : ""}
-              {timeDifferenceMinutes > 0
-                ? `${timeDifferenceMinutes} menit`
-                : ""}
-              {timeDifferenceMinutes < 0
-                ? `${timeDifferenceMinutes} menit`
-                : ""}
-            </Typography>
-            <Typography>
-              <GroupsIcon color="primary" /> Jumlah Orang: {jumlahOrang}
-            </Typography>
-            <Typography>
-              {randomNumber !== null && (
-                <p>
-                  <ConfirmationNumberIcon color="primary" /> No. Antrian:{" "}
-                  {randomNumber}
-                </p>
-              )}
-            </Typography>
-            <Typography></Typography>
-          </CardContent>
-        </Card></Box>
+            <CardHeader
+              title="Info Reservasi"
+              sx={{
+                backgroundColor: "#7472cc",
+                color: "white",
+                textAlign: "center",
+              }}
+            ></CardHeader>
+            <CardContent
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                padding: "10",
+                gap: "1vh",
+              }}
+            >
+              <Typography>
+                <DateRangeIcon color="primary" sx={{ translate: "0 0.5vh" }} />{" "}
+                Tanggal Antri: {tanggal}
+              </Typography>
+              <Typography>
+                <AvTimerIcon color="primary" sx={{ translate: "0 0.7vh" }} />{" "}
+                Estimasi Waktu Antri: ~
+                {timeDifferenceDays > 0 ? `${timeDifferenceDays} hari ` : ""}
+                {timeDifferenceHours > 0 ? `${timeDifferenceHours} jam ` : ""}
+                {timeDifferenceMinutes > 0
+                  ? `${timeDifferenceMinutes} menit`
+                  : ""}
+                {timeDifferenceMinutes < 0
+                  ? `${timeDifferenceMinutes} menit`
+                  : ""}
+              </Typography>
+              <Typography>
+                <GroupsIcon color="primary" sx={{ translate: "0 0.7vh" }} />{" "}
+                Jumlah Orang: {jumlahOrang}
+              </Typography>
+              <Typography>
+                {randomNumber !== null && (
+                  <p>
+                    <ConfirmationNumberIcon
+                      color="primary"
+                      sx={{ translate: "0 0.7vh" }}
+                    />{" "}
+                    No. Antrian: {randomNumber}
+                  </p>
+                )}
+              </Typography>
+              <Typography></Typography>
+            </CardContent>
+          </Card>
+        </Box>
 
-        <Box>
-          <Box component="img" src={KontakImg} alt="dekorasi kontak" sx={{width:"50vh", height:"23vh"}}/>
-          <Card sx={{ flex: "0 0 auto", width: "50vh", textAlign: "right" }}>
+        <Box
+          sx={{
+            display: "flex",
+            width: { xs: "100%", md: "30%" },
+            flexDirection: "column",
+            alignItems: { xs: "center", md: "none" },
+          }}
+        >
+          <Box
+            component="img"
+            src={KontakImg}
+            alt="dekorasi kontak"
+            sx={{
+              width: "55vh",
+              height: "25vh",
+              display: { xs: "none", md: "flex" },
+            }}
+          />
+          <Card
+            sx={{
+              flex: "0 0 auto",
+              width: { xs: "80%", md: "55vh" },
+              minHeight: { xs: "none", md: "40vh" },
+            }}
+          >
             <CardHeader
               title="Kontak Pengguna"
-              sx={{ backgroundColor: "#7472cc", color: "white" }}
+              sx={{
+                backgroundColor: "#7472cc",
+                color: "white",
+                textAlign: "center",
+              }}
             ></CardHeader>
             <CardContent
               sx={{
@@ -229,26 +290,34 @@ const Konfirmasi = () => {
           </Card>
         </Box>
       </Container>
-      <Button variant="contained" onClick={openPopup}>
-        Konfirmasi
-      </Button>
-      <Button
-        variant="text"
-        color="error"
-        onClick={() => {
-          navigate(`/restoran/${id}`);
-        }}
-      >
-        Kembali
-      </Button>
+      <Box         sx={{
+          display: "flex",
+          justifyContent: "center",
+          margin: "5vh 0vh"
+        }}>
+        <Button variant="contained" size="large" onClick={openPopup}>
+          Konfirmasi
+        </Button>
+      </Box>
+
+      <Box sx={{ml:"3vh", pb:"3vh"}}>
+        <Button
+          variant="text"
+          size="large"
+          color="error"
+          onClick={() => {
+            navigate(`/restoran/${id}`);
+          }}
+        >
+          Kembali
+        </Button>
+      </Box>
 
       <Dialog open={isPopupOpen} onClose={closePopup}>
         <DialogTitle>Apakah Semua Sudah Sesuai?</DialogTitle>
         <DialogContent>
           {/* Add content for your confirmation message */}
-          <Typography variant="body1">
-            Tekan ya untuk melanjutkan
-          </Typography>
+          <Typography variant="body1">Tekan ya untuk melanjutkan</Typography>
         </DialogContent>
         <DialogActions>
           <Button onClick={closePopup} color="error">
@@ -259,14 +328,6 @@ const Konfirmasi = () => {
           </Button>
         </DialogActions>
       </Dialog>
-      {/*       <h1>{restaurant.nama}</h1>
-      <p>Tanggal: {tanggal}</p>
-      <p>
-        Estimasi Waktu Antri: ~{timeDifferenceDays} hari {timeDifferenceHours} jam {timeDifferenceMinutes} menit
-      </p>
-      <p>Jumlah Orang: {jumlahOrang}</p>
-      <p>Kode Promo: {kodePromo}</p>
-       */}
     </>
   );
 };
