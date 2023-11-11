@@ -336,7 +336,7 @@ const RestoDetails = () => {
           color="error"
           size="large"
           onClick={() => {
-            navigate("/");
+            navigate("/beranda");
           }}
         >
           Kembali

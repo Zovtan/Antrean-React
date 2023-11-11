@@ -6,6 +6,8 @@ import NotFound from "./components/NotFound"; // Import the Not Found component
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Konfirmasi from "./components/Konfirmasi";
 import Congratulation from "./components/Congratulation";
+import LoginApp from "./components/LoginApp"
+import Register from "./components/Register"
 
 const AntreanApp = () => {
   //theme utama Antrean
@@ -29,7 +31,9 @@ const AntreanApp = () => {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Routes>
-          <Route index path="/" element={<HomeLayout />} />
+          <Route path="/" element={<LoginApp />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/beranda" element={<HomeLayout />} />
           <Route path="/restoran/:restaurantId" element={<RestoDetails />} />
           <Route path="/restoran/:restaurantId/konfirmasi" element={<Konfirmasi />} />
           <Route path="/selamat!" element={<Congratulation/>}/>
