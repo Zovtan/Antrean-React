@@ -1,6 +1,7 @@
 import "./App.css";
 import Login from "./components/Login";
 import Header from "./components/Header";
+import Register from "./components/Register";
 import { ThemeProvider, createTheme } from "@mui/material";
 
 const tema = createTheme({
@@ -13,7 +14,8 @@ function App() {
   return (
     <ThemeProvider theme={tema}>
       <Header />
-      <Login />
+      {/* <Login /> */}
+      <Register />
     </ThemeProvider>
   );
 }
