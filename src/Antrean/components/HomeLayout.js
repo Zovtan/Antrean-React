@@ -30,6 +30,7 @@ function HomeLayout() {
         <SearchResto unfilteredRestaurants={restaurants}/>
         <Typography
           variant="h4"
+          id="terdekat"
           sx={{ fontWeight: "bolder", mt: "5vh", ml: "5vh" }}
         >
           Restoran Terdekat
@@ -37,6 +38,7 @@ function HomeLayout() {
         <RestoCard filteredRestaurants={filteredRestaurantsTerdekat} />
         <Typography
           variant="h4"
+          id="sponsor"
           sx={{ fontWeight: "bolder", mt: "5vh", ml: "5vh" }}
         >
           Sponsor
@@ -44,6 +46,7 @@ function HomeLayout() {
         <RestoCard filteredRestaurants={filteredRestaurantsSponsor} />
         <Typography
           variant="h4"
+          id="populer"
           sx={{ fontWeight: "bolder", mt: "5vh", ml: "5vh" }}
         >
           Restoran Populer

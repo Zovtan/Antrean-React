@@ -1,11 +1,26 @@
 .carCont {
-    width: 100vh;
+    width: 100%;
     margin: 0 auto;
     padding-top: 5em;
 }
 
 .carCont img {
-    width: 100%;
-    height: 40vh;
+    width: 40%;
+    height: 20%;
+    margin: 0 auto;
+
 }
 
+@media (max-width: 600px) {
+    .carCont img {
+        width: 80%;
+        height: 40%;
+    }
+}
+
+@media (max-width: 900px) {
+    .carCont img {
+        width: 55%;
+        height: 25%;
+    }
+}

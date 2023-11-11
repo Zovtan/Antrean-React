@@ -127,17 +127,13 @@ const SearchResto = (props) => {
                 <Card
                   className="cards"
                   key={index}
-                  sx={{
-                    minWidth: "30vh",
-                    maxWidth: "30vh",
-                    textDecoration: "none",
-                  }}
+                  sx={{ flex: "0 0 auto", width: { xs: "23vh", md: "30vh" } }}
                 >
                   <CardMedia
                     component="img"
                     image={restaurant.img}
                     alt={restaurant.nama}
-                    sx={{ height: "20vh" }}
+                    sx={{ height: {xs:"15vh",md:"20vh"} }}
                   />
                   <CardContent
                     sx={{
@@ -145,16 +141,18 @@ const SearchResto = (props) => {
                       flexDirection: "column",
                       alignItems: "center",
                       padding: "0",
+                      textAlign: "center",
                     }}
                   >
+
+                    <Typography variant="h5" component="h5" fontWeight="bolder"  sx={{ fontSize: { xs: "1.2em", md: "1.5em" } }}>
+                      {restaurant.nama}
+                    </Typography>                    
                     <Rating
                       name="read-only"
                       value={restaurant.rating}
                       readOnly
                     />
-                    <Typography variant="h5" component="h5" fontWeight="bolder">
-                      {restaurant.nama}
-                    </Typography>
                     <Typography
                       variant="subtitle1"
                       color={
@@ -170,13 +168,13 @@ const SearchResto = (props) => {
                     </Typography>
                     <div>
                       {restaurant.keramaian === "sepi" && (
-                        <PersonIcon sx={{ fontSize: 60, color: "green" }} />
+                        <PersonIcon sx={{ fontSize: {xs:30, md:60}, color: "green" }} />
                       )}
                       {restaurant.keramaian === "sedang" && (
-                        <PeopleIcon sx={{ fontSize: 60, color: "#ffc400" }} />
+                        <PeopleIcon sx={{ fontSize: {xs:30, md:60}, color: "#ffc400" }} />
                       )}
                       {restaurant.keramaian === "ramai" && (
-                        <GroupsIcon sx={{ fontSize: 60, color: "red" }} />
+                        <GroupsIcon sx={{ fontSize: {xs:30, md:60}, color: "red" }} />
                       )}
                     </div>
                   </CardContent>
