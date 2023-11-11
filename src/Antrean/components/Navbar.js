@@ -1,22 +1,19 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-import logo from "../assets/Logo.png"
-
-
-const pages = ['Beranda', 'Restoran', 'Riwayat'];
-const settings = ['Profil', 'Pengaturan', 'Logout'];
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
+import Container from "@mui/material/Container";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import Tooltip from "@mui/material/Tooltip";
+import MenuItem from "@mui/material/MenuItem";
+import logo from "../assets/Logo.png";
+import { useNavigate } from "react-router-dom";
+import { Link } from "@mui/material";
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -38,30 +35,46 @@ function Navbar() {
     setAnchorElUser(null);
   };
 
+  //handling navigasi
+  const navigate = useNavigate()
+
+  const handleNav = (restoran) => {
+    navigate(`${restoran}`)
+  }
+
   return (
     <AppBar position="fixed">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Box component="img" src={logo} sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, width:"3em", translate:"0.5em 0.3em" }} />
+          <Box
+            component="img"
+            src={logo}
+            sx={{
+              display: { xs: "none", md: "flex" },
+              mr: 1,
+              width: "3em",
+              translate: "0.5em 0.3em",
+            }}
+          />
           <Typography
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="/beranda"
             sx={{
               mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              display: { xs: "none", md: "flex" },
+              fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: '.1rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              letterSpacing: ".1rem",
+              color: "inherit",
+              textDecoration: "none",
             }}
           >
             ANTRE
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -76,56 +89,101 @@ function Navbar() {
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
+                vertical: "bottom",
+                horizontal: "left",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
+                vertical: "top",
+                horizontal: "left",
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu} >
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem onClick={() => {handleNav("/beranda")}}>
+                <Typography textAlign="center">Beranda</Typography>
+              </MenuItem>
+              <MenuItem >
+                <Link href="/beranda#terdekat" textAlign="center" sx={{textDecoration:"none", color:"black"}}>Restoran Terdekat</Link>
+              </MenuItem>
+              <MenuItem >
+                <Link href="/beranda#sponsor" textAlign="center" sx={{textDecoration:"none", color:"black"}}>Restoran Sponsor</Link>
+              </MenuItem>
+              <MenuItem >
+                <Link href="/beranda#populer" textAlign="center" sx={{textDecoration:"none", color:"black"}}>Restoran Populer</Link>
+              </MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Typography textAlign="center">Riwayat</Typography>
+              </MenuItem>
             </Menu>
           </Box>
-          <Box component="img" src={logo} sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, width:"3em", translate:"0.5em 0.3em" }} />
+          <Box
+            component="img"
+            src={logo}
+            sx={{
+              display: { xs: "flex", md: "none" },
+              mr: 1,
+              width: "3em",
+              translate: "0.5em 0.3em",
+            }}
+          />
           <Typography
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="/beranda"
             sx={{
               mr: 2,
-              display: { xs: 'flex', md: 'none' },
+              display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: 'monospace',
+              fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: '.1rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              letterSpacing: ".1rem",
+              color: "inherit",
+              textDecoration: "none",
             }}
           >
             ANTRE
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            
+            <Button
+            href="/beranda"
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              Beranda
+            </Button>
+            <Button
+            href="/beranda#terdekat"
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              Restoran Terdekat
+            </Button>
+            <Button
+            href="/beranda#sponsor"
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              Restoran Sponsor
+            </Button>
+            <Button
+            href="/beranda#populer"
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              Restoran Populer
+            </Button>
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              Riwayat
+            </Button>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -135,26 +193,30 @@ function Navbar() {
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: '45px' }}
+              sx={{ mt: "45px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem onClick={handleCloseUserMenu}>
+                <Typography textAlign="center">Profil</Typography>
+              </MenuItem>
+              <MenuItem onClick={handleCloseUserMenu}>
+                <Typography textAlign="center">Pengaturan</Typography>
+              </MenuItem>
+              <MenuItem  onClick={() => {handleNav("/")} }>
+                <Typography textAlign="center" color="error">Log Out</Typography>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>
