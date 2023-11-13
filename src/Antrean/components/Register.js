@@ -91,6 +91,7 @@ function RegistrationForm() {
           backgroundColor: "white",
           padding: "5vh",
           width: "70vh",
+          borderRadius:"1vh",
         }}
       >
         <form onSubmit={handleSubmit} style={{width:"100%"}}>
@@ -118,7 +119,7 @@ function RegistrationForm() {
             <Box>
               <Typography className="detail">Email / No.Handphone</Typography>
               <TextField
-                type="text"
+                type="email"
                 placeholder="Masukkan Email / No.Hp..."
                 required
                 fullWidth

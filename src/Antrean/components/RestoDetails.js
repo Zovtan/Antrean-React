@@ -90,15 +90,43 @@ const RestoDetails = () => {
       isFormValid = false;
     }
 
-    //validasi waktu masa lalu tapi diberi kelegaan 5 menit agar tdk ditolak pada detik pertama di buat form
+// cara hitung outdated, dibawah patch menit terakhir dgn penjelasan
+/*     //validasi waktu masa lalu tapi diberi kelegaan 5 menit agar tdk ditolak pada detik pertama di buat form
     const currentTime = dayjs().subtract(5, "minutes");
     const selectedTime = waktu; // Set the time components to the start of the minute
-
+    
     if (selectedTime.isBefore(currentTime)) {
       // Disable submit when a time within the 5-minute window is picked.
       alert("Tidak dapat memilih waktu yang sudah lewat")
       isFormValid = false;
+    } */
+
+    //berikut adalah pengecekan yg lbh akurat dgn kode yg sama dari konfirmasi.js
+    const currentTime = new Date();
+    const [givenHours, givenMinutes] = waktu.format("HH mm").split(" ").map(Number); //mengambil jam dan menit dan di pisah dalah nilai masing2 serta diubah menjadi int
+
+    //total menit waktu sekarang
+    const currentTotalMinutes =
+    currentTime.getHours() * 60 + currentTime.getMinutes();
+  const givenTotalMinutes = givenHours * 60 + givenMinutes + 5; //+5 utk memberi kelonggaaran saat menginput form
+  
+    //selisih total menit input dgn total menit sekarang 
+    let timeDifferenceMinutes =
+    givenTotalMinutes - currentTotalMinutes
+
+    //selisih total menit hari ini dengan total menit hari yg di input
+    const dayMinutesDifference = -1 * dayjs().diff(tanggal, "minutes"); 
+  
+    //jika selisih positif berarti
+    if (dayMinutesDifference > 0) {
+    timeDifferenceMinutes += dayMinutesDifference;
+  }
+
+    if (timeDifferenceMinutes < 0){
+      alert("Tidak dapat memilih waktu yang sudah lewat")
+      isFormValid = false;
     }
+
 
     // mengirim data melalui url agar dapat dipakai ulang
     if (isFormValid) {
